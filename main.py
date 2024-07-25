@@ -9,7 +9,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 # Constants
-CHANNEL_URL = 'https://www.youtube.com/@DanMohlerSR'
+CHANNEL_URL = 'https://www.youtube.com/@DanMohlerSR/videos'
 AUDIO_OUTPUT_DIR = '/tmp/audio_files'
 PODCAST_OUTPUT_FILE = '/tmp/podcast.xml'
 GDRIVE_FOLDER_ID = os.environ['GDRIVE_FOLDER_ID']
@@ -18,8 +18,8 @@ GDRIVE_FOLDER_ID = os.environ['GDRIVE_FOLDER_ID']
 os.makedirs(AUDIO_OUTPUT_DIR, exist_ok=True)
 
 # Save the Google credentials from the secret to a file
-with open('/tmp/credentials.json', 'w') as f:
-    f.write(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
+# with open('/tmp/credentials.json', 'w') as f:
+#    f.write(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
 
 # yt-dlp options
 ydl_opts = {
@@ -40,7 +40,9 @@ def download_audio():
 
 
 def upload_to_gdrive(file_path, mime_type):
-    credentials = Credentials.from_service_account_file('credentials.json')
+    # credentials = Credentials.from_service_account_file('credentials.json')
+    credentials = Credentials.from_service_account_info(
+        os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
     service = build('drive', 'v3', credentials=credentials)
 
     file_metadata = {

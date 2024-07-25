@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
   build:
@@ -27,6 +28,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install yt-dlp pydub feedgen google-api-python-client google-auth google-auth-oauthlib google-auth-httplib2
+
+      #- name: Set up Google credentials
+      #  run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > $GITHUB_WORKSPACE/credentials.json
 
       - name: Run script
         run: python main.py
