@@ -29,7 +29,7 @@ ydl_opts = {
         'preferredcodec': 'mp3',
         'preferredquality': '192',
     }],
-    'playlistend': 2,
+    'playlistend': 1,
     'outtmpl': f'{AUDIO_OUTPUT_DIR}/%(title)s.%(ext)s',
 }
 
@@ -41,8 +41,8 @@ def download_audio():
 
 def upload_to_gdrive(file_path, mime_type):
     # credentials = Credentials.from_service_account_file('credentials.json')
-    credentials = Credentials.from_service_account_info(
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
+    creds = json.loads(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
+    credentials = Credentials.from_service_account_info(creds)
     service = build('drive', 'v3', credentials=credentials)
 
     file_metadata = {
