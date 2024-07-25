@@ -2,7 +2,7 @@ name: YouTube to Podcast
 
 on:
   schedule:
-    - cron: "7 20 * * *" # Run daily at midnight
+    - cron: "*/2 * * *" # Run daily at midnight
   push:
     branches:
       - main
