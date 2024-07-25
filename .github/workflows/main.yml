@@ -9,6 +9,9 @@ on:
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
+  job-name:
+    permissions:
+      contents: write
   build:
     runs-on: ubuntu-latest
 
