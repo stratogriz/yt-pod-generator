@@ -3,7 +3,7 @@ import json
 import yt_dlp
 from pydub import AudioSegment
 from feedgen.feed import FeedGenerator
-from datetime import datetime
+from datetime import datetime, timezone
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
@@ -77,7 +77,10 @@ def generate_podcast():
             fe = fg.add_entry()
             fe.title(audio_file)
             fe.enclosure(file_url, 0, 'audio/mpeg')
-            fe.pubDate(datetime.now())
+            dt = datetime.now()
+            dt = dt.replace(tzinfo=timezone.utc)
+
+            fe.pubDate(dt)
 
     fg.rss_file(PODCAST_OUTPUT_FILE)
     upload_to_gdrive(PODCAST_OUTPUT_FILE, 'application/rss+xml')
