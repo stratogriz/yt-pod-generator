@@ -29,7 +29,7 @@ ydl_opts = {
         'preferredcodec': 'mp3',
         'preferredquality': '192',
     }],
-    'playlistend': 10,
+    'playlistend': 2,
     'outtmpl': f'{AUDIO_OUTPUT_DIR}/%(title)s.%(ext)s',
 }
 
