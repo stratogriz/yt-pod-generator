@@ -11,7 +11,7 @@ from googleapiclient.http import MediaFileUpload
 # Constants
 CHANNEL_URL = 'https://www.youtube.com/@DanMohlerSR/videos'
 AUDIO_OUTPUT_DIR = '/tmp/audio_files'
-PODCAST_OUTPUT_FILE = '/tmp/podcast.xml'
+PODCAST_OUTPUT_FILE = 'podcast.xml'
 GDRIVE_FOLDER_ID = os.environ['GDRIVE_FOLDER_ID']
 
 # Ensure directories exist
@@ -40,7 +40,6 @@ def download_audio():
 
 
 def upload_to_gdrive(file_path, mime_type):
-    # credentials = Credentials.from_service_account_file('credentials.json')
     creds = json.loads(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
     credentials = Credentials.from_service_account_info(creds)
     service = build('drive', 'v3', credentials=credentials)
@@ -83,7 +82,7 @@ def generate_podcast():
             fe.pubDate(dt)
 
     fg.rss_file(PODCAST_OUTPUT_FILE)
-    upload_to_gdrive(PODCAST_OUTPUT_FILE, 'application/rss+xml')
+    # upload_to_gdrive(PODCAST_OUTPUT_FILE, 'application/rss+xml')
 
 
 def main():
