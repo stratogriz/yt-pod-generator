@@ -9,7 +9,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 # Constants
-CHANNEL_URL = 'https://www.youtube.com/c/UCvkM4IszXrk76NsnnrrBr_g'
+CHANNEL_URL = 'https://www.youtube.com/@DanMohlerSR'
 AUDIO_OUTPUT_DIR = '/tmp/audio_files'
 PODCAST_OUTPUT_FILE = '/tmp/podcast.xml'
 GDRIVE_FOLDER_ID = os.environ['GDRIVE_FOLDER_ID']
@@ -29,6 +29,7 @@ ydl_opts = {
         'preferredcodec': 'mp3',
         'preferredquality': '192',
     }],
+    'playlistend': 10,
     'outtmpl': f'{AUDIO_OUTPUT_DIR}/%(title)s.%(ext)s',
 }
 
