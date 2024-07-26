@@ -4,9 +4,7 @@ import yt_dlp
 from pydub import AudioSegment
 from feedgen.feed import FeedGenerator
 from datetime import datetime, timezone
-from google.oauth2.service_account import Credentials
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaFileUpload
+
 
 # Constants
 CHANNEL_URL = 'https://www.youtube.com/@DanMohlerSR/videos'
@@ -18,7 +16,7 @@ os.makedirs(AUDIO_OUTPUT_DIR, exist_ok=True)
 
 # yt-dlp options
 ydl_opts = {
-    'format': '+size,+br',
+    'format': '5,5',
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
