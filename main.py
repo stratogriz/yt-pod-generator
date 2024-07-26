@@ -16,7 +16,7 @@ os.makedirs(AUDIO_OUTPUT_DIR, exist_ok=True)
 
 # yt-dlp options
 ydl_opts = {
-    'format': 'best[filesize<50M]/mp3',
+    'format': 'bestaudio[abr<=128k]',
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
