@@ -33,11 +33,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Cache ffmpeg directory
+      - name: Cache ffmpeg binary
         id: cache-ffmpeg
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
-          path: /usr/local
+          path: /usr/local/bin/ffmpeg
           key: ${{ runner.os }}-ffmpeg
           restore-keys: |
             ${{ runner.os }}-ffmpeg
