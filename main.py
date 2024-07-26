@@ -18,11 +18,11 @@ os.makedirs(AUDIO_OUTPUT_DIR, exist_ok=True)
 
 # yt-dlp options
 ydl_opts = {
-    'format': 'bestaudio/best',
+    'format': '+size,+br',
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
-        'preferredquality': '192',
+        'preferredquality': '128',
     }],
     'playlistend': 3,
     'outtmpl': f'{AUDIO_OUTPUT_DIR}/%(title)s.%(ext)s',
