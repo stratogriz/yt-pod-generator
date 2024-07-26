@@ -68,19 +68,20 @@ def generate_podcast():
     fg = FeedGenerator()
     fg.load_extension('podcast')
 
-    fg.title('My YouTube Channel Podcast')
+    fg.title('TR - Dan Mohler YT Archives')
     fg.link(href='http://example.com', rel='alternate')
     fg.description('A podcast of my favorite YouTube channel.')
     fg.language('en')
 
     for audio_file in os.listdir(AUDIO_OUTPUT_DIR):
+        print(audio_file)
         if audio_file.endswith('.mp3'):
             audio_file_path = os.path.join(AUDIO_OUTPUT_DIR, audio_file)
-            file_id = upload_to_gdrive(audio_file_path, 'audio/mpeg')
-            file_url = f'https://drive.google.com/uc?export=download&id={file_id}'
+            # file_id = upload_to_gdrive(audio_file_path, 'audio/mpeg')
+            # file_url = f'https://drive.google.com/uc?export=download&id={file_id}'
             fe = fg.add_entry()
             fe.title(audio_file)
-            fe.enclosure(file_url, 0, 'audio/mpeg')
+            fe.enclosure(audio_file, 0, 'audio/mpeg')
             dt = datetime.now()
             dt = dt.replace(tzinfo=timezone.utc)
 
