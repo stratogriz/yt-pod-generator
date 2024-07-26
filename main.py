@@ -81,7 +81,11 @@ def generate_podcast():
             # file_url = f'https://drive.google.com/uc?export=download&id={file_id}'
             fe = fg.add_entry()
             fe.title(audio_file)
-            fe.enclosure(audio_file, 0, 'audio/mpeg')
+            # fe.enclosure(audio_file, 0, 'audio/mpeg')
+            fe.enclosure(
+                f'https://stratogriz.github.io/yt-pod-generator/audio/{audio_file}.mp3', 0,
+                'audio/mpeg'
+            )
             dt = datetime.now()
             dt = dt.replace(tzinfo=timezone.utc)
 
