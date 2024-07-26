@@ -33,12 +33,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Cache ffmpeg
+      - name: Cache ffmpeg directory
         id: cache-ffmpeg
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
-          path: /usr/local/bin/ffmpeg
+          path: /usr/local
           key: ${{ runner.os }}-ffmpeg
+          restore-keys: |
+            ${{ runner.os }}-ffmpeg
 
       - name: Install ffmpeg if not cached
         if: steps.cache-ffmpeg.outputs.cache-hit != 'true'
