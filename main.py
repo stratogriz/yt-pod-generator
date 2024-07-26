@@ -11,6 +11,7 @@ from googleapiclient.http import MediaFileUpload
 # Constants
 CHANNEL_URL = 'https://www.youtube.com/@DanMohlerSR/videos'
 AUDIO_OUTPUT_DIR = '/tmp/audio_files'
+AUDIO_OUTPUT_DIR = 'audio'
 PODCAST_OUTPUT_FILE = 'podcast.xml'
 GDRIVE_FOLDER_ID = os.environ['GDRIVE_FOLDER_ID']
 
@@ -32,6 +33,10 @@ ydl_opts = {
     'playlistend': 1,
     'outtmpl': f'{AUDIO_OUTPUT_DIR}/%(title)s.%(ext)s',
 }
+
+# need to filter for downloaded already...
+# query gdrive and make list and check for presence...
+# or query the xml...
 
 
 def download_audio():
