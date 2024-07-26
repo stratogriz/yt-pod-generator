@@ -60,6 +60,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
-          git add -f audio/*.mp3 podcast.xml
+          git add audio/*.mp3 podcast.xml
           git commit -m 'Update podcast feed with new episodes and audio files' || echo "No changes to commit"
           git push origin main
