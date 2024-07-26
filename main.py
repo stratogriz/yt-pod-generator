@@ -24,6 +24,8 @@ ydl_opts = {
     }],
     'playlistend': 3,
     'outtmpl': f'{AUDIO_OUTPUT_DIR}/%(title)s.%(ext)s',
+    # Filter videos between 8 minutes and 2 hours
+    'match_filter': yt_dlp.utils.match_filter_func('duration >= 480 & duration <= 7200'),
 }
 
 
