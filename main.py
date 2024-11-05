@@ -32,6 +32,7 @@ ydl_opts = {
 def download_audio():
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([CHANNEL_URL])
+        ydl.download(['https://www.youtube.com/watch?v=VOTjzVZihfM'])
 
 
 def generate_podcast():
