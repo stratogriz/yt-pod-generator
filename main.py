@@ -33,6 +33,7 @@ def download_audio():
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([CHANNEL_URL])
         ydl.download(['https://www.youtube.com/watch?v=VOTjzVZihfM'])
+        ydl.download(['https://www.youtube.com/@JOGS.STUDIO/videos'])
 
 
 def generate_podcast():
