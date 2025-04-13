@@ -25,15 +25,15 @@ ydl_opts = {
     'playlistend': 10,
     'outtmpl': f'{AUDIO_OUTPUT_DIR}/%(title)s.%(ext)s',
     # Filter videos between 8 minutes and 1 hour 40 min
-    'match_filter': yt_dlp.utils.match_filter_func('duration >= 480 & duration <= 6000'),
+    'match_filter': yt_dlp.utils.match_filter_func('duration >= 480'),
 }
 
 
 def download_audio():
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([CHANNEL_URL])
-        ydl.download(['https://www.youtube.com/watch?v=VOTjzVZihfM'])
-        ydl.download(['https://www.youtube.com/@JOGS.STUDIO/videos'])
+        #ydl.download([CHANNEL_URL])
+        #ydl.download(['https://www.youtube.com/watch?v=VOTjzVZihfM'])
+        #ydl.download(['https://www.youtube.com/@JOGS.STUDIO/videos'])
         ydl.download(['https://www.youtube.com/watch?v=pKBTU3EPViM'])
 
 
